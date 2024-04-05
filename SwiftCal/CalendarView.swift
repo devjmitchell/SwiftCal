@@ -46,6 +46,20 @@ struct CalendarView: View {
                                     Circle()
                                         .foregroundStyle(.orange.opacity(day.didStudy ? 0.3 : 0.0))
                                 )
+                                .onTapGesture {
+                                    if day.date!.dayInt <= Date().dayInt {
+                                        day.didStudy.toggle()
+                                        
+                                        do {
+                                            try viewContext.save()
+                                            print("👆 \(day.date!.dayInt) now studied.")
+                                        } catch {
+                                            print("Failed to save context")
+                                        }
+                                    } else {
+                                        print("Can't study in the future!!")
+                                    }
+                                }
                         }
                     }
                 }
