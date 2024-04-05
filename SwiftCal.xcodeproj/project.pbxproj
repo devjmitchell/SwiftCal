@@ -21,6 +21,8 @@
 		D3E9C31C2BC0479C00D10A65 /* SwiftCalWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E9C31B2BC0479C00D10A65 /* SwiftCalWidget.swift */; };
 		D3E9C31E2BC0479D00D10A65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E9C31D2BC0479D00D10A65 /* Assets.xcassets */; };
 		D3E9C3222BC0479D00D10A65 /* SwiftCalWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D3E9C3122BC0479C00D10A65 /* SwiftCalWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D3E9C32A2BC04F0400D10A65 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E9C3292BC04F0400D10A65 /* CalendarHeaderView.swift */; };
+		D3E9C32B2BC04F0400D10A65 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E9C3292BC04F0400D10A65 /* CalendarHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,7 @@
 		D3E9C31F2BC0479D00D10A65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3E9C3272BC047DD00D10A65 /* SwiftCal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftCal.entitlements; sourceTree = "<group>"; };
 		D3E9C3282BC0482F00D10A65 /* SwiftCalWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftCalWidgetExtension.entitlements; sourceTree = "<group>"; };
+		D3E9C3292BC04F0400D10A65 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,7 @@
 				D3E9C3272BC047DD00D10A65 /* SwiftCal.entitlements */,
 				D325E0FD2BBF338E00415D28 /* SwiftCalApp.swift */,
 				D325E0FF2BBF338E00415D28 /* CalendarView.swift */,
+				D3E9C3292BC04F0400D10A65 /* CalendarHeaderView.swift */,
 				D3E9C30C2BC042B600D10A65 /* StreakView.swift */,
 				D3E9C30A2BC03A5400D10A65 /* Date+Ext.swift */,
 				D325E1012BBF338F00415D28 /* Assets.xcassets */,
@@ -255,6 +259,7 @@
 			files = (
 				D3E9C30D2BC042B600D10A65 /* StreakView.swift in Sources */,
 				D325E1072BBF338F00415D28 /* Persistence.swift in Sources */,
+				D3E9C32A2BC04F0400D10A65 /* CalendarHeaderView.swift in Sources */,
 				D325E1002BBF338E00415D28 /* CalendarView.swift in Sources */,
 				D325E10A2BBF338F00415D28 /* SwiftCal.xcdatamodeld in Sources */,
 				D325E0FE2BBF338E00415D28 /* SwiftCalApp.swift in Sources */,
@@ -267,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3E9C31C2BC0479C00D10A65 /* SwiftCalWidget.swift in Sources */,
+				D3E9C32B2BC04F0400D10A65 /* CalendarHeaderView.swift in Sources */,
 				D3E9C31A2BC0479C00D10A65 /* SwiftCalWidgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

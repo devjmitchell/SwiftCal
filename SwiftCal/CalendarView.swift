@@ -19,19 +19,10 @@ struct CalendarView: View {
                                Date().endOfMonth as CVarArg))
     private var days: FetchedResults<Day>
     
-    let daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"]
-    
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                    ForEach(daysOfWeek, id: \.self) { dayOfWeek in
-                        Text(dayOfWeek)
-                            .fontWeight(.black)
-                            .foregroundStyle(.orange)
-                            .frame(maxWidth: .infinity)
-                    }
-                }
+                CalendarHeaderView()
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7)) {
                     ForEach(days) { day in

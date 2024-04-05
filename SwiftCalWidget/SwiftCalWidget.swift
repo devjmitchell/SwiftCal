@@ -10,11 +10,11 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+        SimpleEntry(date: Date())
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
+        let entry = SimpleEntry(date: Date())
         completion(entry)
     }
 
@@ -25,7 +25,7 @@ struct Provider: TimelineProvider {
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
+            let entry = SimpleEntry(date: entryDate)
             entries.append(entry)
         }
 
@@ -36,45 +36,65 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let emoji: String
 }
 
 struct SwiftCalWidgetEntryView : View {
     var entry: Provider.Entry
-
+    let columns = Array(repeating: GridItem(.flexible()), count: 7)
+    
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Emoji:")
-            Text(entry.emoji)
+        HStack {
+            VStack {
+                Text("30")
+                    .font(.system(size: 70, design: .rounded))
+                    .bold()
+                    .foregroundStyle(.orange)
+                
+                Text("day streak")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            
+            VStack {
+                CalendarHeaderView(font: .caption)
+                
+                LazyVGrid(columns: columns, spacing: 7) {
+                    ForEach(0..<31) { _ in
+                        Text("30")
+                            .font(.caption2)
+                            .bold()
+                            .frame(maxWidth: .infinity)
+                            .foregroundStyle(.secondary)
+                            .background(
+                                Circle()
+                                    .foregroundStyle(.orange.opacity(0.3))
+                                    .scaleEffect(1.5)
+                            )
+                    }
+                }
+            }
+            .padding(.leading, 6)
         }
     }
 }
 
 struct SwiftCalWidget: Widget {
     let kind: String = "SwiftCalWidget"
-
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(iOS 17.0, *) {
-                SwiftCalWidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                SwiftCalWidgetEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
+            SwiftCalWidgetEntryView(entry: entry)
+                .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .supportedFamilies([.systemMedium])
     }
 }
 
-#Preview(as: .systemSmall) {
+#Preview(as: .systemMedium) {
     SwiftCalWidget()
 } timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
+    SimpleEntry(date: .now)
+    SimpleEntry(date: .now)
 }
