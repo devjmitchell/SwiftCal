@@ -5,8 +5,9 @@
 //  Created by Jason Mitchell on 4/4/24.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
+import WidgetKit
 
 struct CalendarView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -43,6 +44,7 @@ struct CalendarView: View {
                                         
                                         do {
                                             try viewContext.save()
+                                            WidgetCenter.shared.reloadTimelines(ofKind: "SwiftCalWidget")
                                             print("👆 \(day.date!.dayInt) now studied.")
                                         } catch {
                                             print("Failed to save context")
