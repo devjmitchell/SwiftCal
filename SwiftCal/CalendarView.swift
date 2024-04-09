@@ -11,7 +11,7 @@ import WidgetKit
 
 struct CalendarView: View {
     @Environment(\.modelContext) private var context
-    @Query(filter: #Predicate<Day> { $0.date > startDate && $0.date < endDate }, sort: \Day.date)
+    @Query(filter: #Predicate<Day> { $0.date >= startDate && $0.date < endDate }, sort: \Day.date)
     var days: [Day]
     
     static var startDate: Date { .now.startOfCalendarWithPrefixDays }
